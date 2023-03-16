@@ -49,8 +49,8 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
         ViewHolder(View view, OnItemClickListener onItemClickListener){
             super(view);
             textView = view.findViewById(R.id.service);
-            //ImageView imageView = view.findViewById(R.id.image_car);
-            //imageView.setImageResource(R.drawable.not_painted);
+            ImageView imageView = view.findViewById(R.id.image_car);
+            imageView.setImageResource(R.drawable.not_painted);
             this.onItemClickListener = onItemClickListener;
 
             itemView.setOnClickListener(new View.OnClickListener() {

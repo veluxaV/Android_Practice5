@@ -68,6 +68,14 @@ public class Services extends Fragment implements ServicesAdapter.OnItemClickLis
             throw new RuntimeException(e);
         }
 
+        // Первым делом необходимо найти список на верстке экрана
+        services = (RecyclerView) v.findViewById(R.id.services);
+        // Далее, создать адаптер и передать в него Context имассив элементов
+        ServicesAdapter adapter = new ServicesAdapter(getContext(), servicesArray, this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        services.setLayoutManager(layoutManager);
+        // устанавливаем для списка адаптер
+        services.setAdapter(adapter);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
