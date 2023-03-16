@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstScreen"
+    android:background="@color/grey"
+    android:id="@+id/firstScreen">
+
+
+    <TextView
+        android:id="@+id/title_box"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        />
+    <TextView
+        android:id="@+id/small_title"
+        android:layout_below="@+id/title_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_car"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/add_car_text"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/small_title"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/car_is_not_added"
+        android:textColor="@color/dark_grey" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/Car"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+ />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:fontFamily="sans-serif-medium"
+            android:padding="13dp"
+            android:text="@string/app_name"
+            android:textColor="@color/red"
+            android:textSize="40sp" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/add_car_button"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_car_text"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/red"
+        android:text="@string/add_car" />
+    <Button
+        android:id="@+id/choose_service_button"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_car_button"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/red"
+        android:text="@string/choose_service" />
+
+
+</RelativeLayout>

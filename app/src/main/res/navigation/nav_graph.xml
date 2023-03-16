@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstScreen">
+
+    <fragment
+        android:id="@+id/firstScreen"
+        android:name="com.example.pr55.FirstScreen"
+        android:label="fragment_first_screen"
+        tools:layout="@layout/fragment_first_screen" >
+        <action
+            android:id="@+id/action_firstScreen_to_addCar"
+            app:destination="@id/addCar" />
+        <action
+            android:id="@+id/action_firstScreen_to_services"
+            app:destination="@id/services" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCar"
+        android:name="com.example.pr55.AddCar"
+        android:label="fragment_add_car"
+        tools:layout="@layout/fragment_add_car" >
+        <action
+            android:id="@+id/action_addCar_to_firstScreen"
+            app:destination="@id/firstScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/services"
+        android:name="com.example.pr55.Services"
+        android:label="fragment_services"
+        tools:layout="@layout/fragment_services" >
+        <action
+            android:id="@+id/action_services_to_firstScreen"
+            app:destination="@id/firstScreen" />
+    </fragment>
+</navigation>

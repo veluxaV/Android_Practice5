@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">Pochinu</string>
+    <string name="my_car">Мой автомобиль</string>
+    <string name="car_is_not_added">Упс… У Вас ещё нет автомобиля</string>
+    <string name="add_car">Добавить автомобиль</string>
+    <string name="car_name">Название автомобиля</string>
+    <string name="car_brandname">Марка автомобиля</string>
+    <string name="go_back">Назад</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_service">Выбрать услугу</string>
+    <string-array name="car_brands">
+        <item>BMW</item>
+        <item>Mercedes</item>
+        <item>Nissan</item>
+        <item>Toyota</item>
+        <item>Lada</item>
+        <item>Chevrolet</item>
+        <item>Lexus</item>
+        <item>Bentley</item>
+        <item>Honda</item>
+        <item>Ford</item>
+        <item>Audi</item>
+        <item>Renault</item>
+        <item>Skoda</item>
+        <item>Hyundai</item>
+        <item>Cadillac</item>
+        <item>Tesla</item>
+        <item>GAS</item>
+        <item>UAS</item>
+        <item>Aurus</item>
+        <item>Opel</item>
+        <item>Ferrari</item>
+        <item>Infiniti</item>
+        <item>Kia</item>
+        <item>Land Rover</item>
+        <item>Lamborghini</item>
+        <item>Rolls-Royce</item>
+    </string-array>
+    <string-array name="services">
+        <item>Замена двигателя</item>
+        <item>Замена масла</item>
+        <item>Замена фар</item>
+        <item>Замена шин</item>
+        <item>Замена дисков</item>
+        <item>Замена свечей</item>
+        <item>Замена фильтров</item>
+        <item>Диагностика</item>
+        <item>Ремонт двигателя</item>
+        <item>Ремонт тормозов</item>
+        <item>Ремонт подвески</item>
+        <item>Ремонт панели управления</item>
+        <item>Ремонт лобового стекла</item>
+        <item>Ремонт дверныз стекол</item>
+        <item>Покрас автомобиля</item>
+        <item>Ремонт трансмиссии</item>
+        <item>Сход-развал</item>
+        <item>Балансировка шин</item>
+        <item>Мойка салона</item>
+        <item>Мойка</item>
+        <item>Ремонт электрики и электроники</item>
+        <item>Ремонт системы охлаждения</item>
+        <item>Замена ремней и цепей ГРМ</item>
+        <item>Замена топливного насоса</item>
+        <item>Ремонт системы питания</item>
+        <item>Замена форсунок и свечей</item>
+        <item>Ремонт системы впрыска топлива</item>
+        <item>Замена амортизаторов</item>
+        <item>Ремонт дверей и замков</item>
+    </string-array>
+</resources>
