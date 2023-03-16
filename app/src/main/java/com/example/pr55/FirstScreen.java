@@ -64,13 +64,13 @@ public class FirstScreen extends Fragment {
         add_car_text = (TextView) v.findViewById(R.id.add_car_text);
         addCarButton = (Button) v.findViewById(R.id.add_car_button);
         chooseServiceButton = (Button) v.findViewById(R.id.choose_service_button);
-
         if (getArguments() != null) {
             String name = getArguments().getString(ARG_PARAM1);
-            String brand = getArguments().getString(ARG_PARAM2);
+            //String brand = getArguments().getString(ARG_PARAM2);
             Log.d("Car name Get Args", name);
-            Log.d("Car brand  Get Args", brand);
-            add_car_text.setText("Ваша машина: " + name + " " + brand);
+            //Log.d("Car brand  Get Args", brand);
+            //add_car_text.setText("Ваша машина: " + name + " " + brand);
+            add_car_text.setText("Ваша машина: " + name);
         }
 
         addCarButton.setOnClickListener(new View.OnClickListener() {

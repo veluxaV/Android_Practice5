@@ -90,10 +90,9 @@ public class AddCar extends Fragment {
                 //Log.d("Car brand", brand);
 
                 if (savedInstanceState == null) {
-                    //getActivity().getSupportFragmentManager().beginTransaction()
-                    //        .replace(R.id.container, FirstScreen.newInstance(name, null))
-                    //        .commit();
-                    Navigation.findNavController(view).navigate(R.id.action_addCar_to_firstScreen);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ARG_PARAM1, name);
+                    Navigation.findNavController(view).navigate(R.id.action_addCar_to_firstScreen, bundle);
                 }
             }
         });

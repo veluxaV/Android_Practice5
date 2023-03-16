@@ -82,9 +82,6 @@ public class Services extends Fragment implements ServicesAdapter.OnItemClickLis
             public void onClick(View view) {
 
                 if (savedInstanceState == null) {
-                    //getActivity().getSupportFragmentManager().beginTransaction()
-                    //        .replace(R.id.container, FirstScreen.newInstance(null, null))
-                    //        .commit();
                     Navigation.findNavController(view).navigate(R.id.action_services_to_firstScreen);
                 }
             }
