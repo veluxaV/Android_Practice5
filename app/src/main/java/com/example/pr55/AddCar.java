@@ -1,9 +1,17 @@
 package com.example.pr55;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -23,6 +31,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import android.Manifest;
+
+
 public class AddCar extends Fragment {
 
     Button backButton;
@@ -32,6 +43,13 @@ public class AddCar extends Fragment {
     private EditText car_brandname;
     final static String ARG_PARAM1 = "CAR_NAME";
     final static String ARG_PARAM2 = "CAR_BRAND";
+
+
+    // Идентификатор канала
+    private static String CHANNEL_ID = "Cat channel";
+    private static final int REQUEST_CODE_PERMISSION = 1;
+    // Идентификатор уведомления
+    private static final int notificationId = 1;
 
     public static AddCar newInstance() {
         AddCar fragment = new AddCar();
@@ -92,12 +110,72 @@ public class AddCar extends Fragment {
                 if (savedInstanceState == null) {
                     Bundle bundle = new Bundle();
                     bundle.putString(ARG_PARAM1, name);
+
+                    if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        // Permission is not granted
+                        // Request permission from the user
+                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                                REQUEST_CODE_PERMISSION);
+
+                    } else {
+                        String title = "Нажата кнопка";
+                        String message = "Ты просто супер";
+                        showNotification(getContext(), title, message);
+                    }
+
+
                     Navigation.findNavController(view).navigate(R.id.action_addCar_to_firstScreen, bundle);
                 }
             }
         });
 
         return v;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission is granted
+                // Perform the operation that requires this permission
+                String title = "Нажата кнопка";
+                String message = "Ты просто супер";
+                showNotification(getContext(), title, message);
+            } else {
+                // Permission is denied
+                // Disable the functionality that depends on this permission
+                Toast.makeText(getActivity(), "Permission denied", Toast.LENGTH_SHORT).show();
+                Log.d("УВЕДОМЛЕНИЕ", "НЕДОСТУПНО");
+            }
+        }
+    }
+
+
+    public void showNotification(Context context, String title, String message) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create the NotificationChannel
+            String name1 = "My notification channel name";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name1, importance);
+            channel.enableVibration(true);
+            channel.setVibrationPattern(new long[]{100, 200, 300, 400, 500});
+
+            // Register the channel with the system
+            NotificationManager notificationManager = getContext().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.drawable.car)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        // notificationId is a unique int for each notification that you must define
+        notificationManager.notify(notificationId, builder.build());
     }
 
     public ArrayList<String> getBrandsFromFile(Context context) throws IOException
