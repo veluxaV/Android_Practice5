@@ -40,7 +40,6 @@ public class MyService extends Service {
         }
     }
 
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -51,11 +50,6 @@ public class MyService extends Service {
 
         ImageView bannerImageView = bannerLayout.findViewById(R.id.imageView);
         bannerImageView.setImageResource(R.drawable.barcode);
-        //bannerLayout.setVisibility(View.GONE);
-
-        // Установим цвет фона для системного окна
-        //bannerLayout.setBackgroundColor(Color.TRANSPARENT);
-
 
         // Создание PendingIntent'a для перехода в приложение
         Intent intent= new Intent(this, MainActivity.class);
@@ -84,8 +78,8 @@ public class MyService extends Service {
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, // параметр, который позволяет отображать окно поверх всех других окон
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, // параметр, который позволяет отображать
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE        // окно поверх всех других окон
                         | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                         | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
                 PixelFormat.TRANSLUCENT);

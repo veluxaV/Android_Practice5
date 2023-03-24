@@ -2,7 +2,9 @@ package com.example.pr55;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Build;
@@ -106,7 +108,6 @@ public class AddCar extends Fragment {
                 //String brand = car_brandname.getText().toString();
                 Log.d("Car name", name);
                 //Log.d("Car brand", brand);
-
                 if (savedInstanceState == null) {
                     Bundle bundle = new Bundle();
                     bundle.putString(ARG_PARAM1, name);
@@ -117,19 +118,15 @@ public class AddCar extends Fragment {
                         // Request permission from the user
                         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.POST_NOTIFICATIONS},
                                 REQUEST_CODE_PERMISSION);
-
                     } else {
-                        String title = "Уведомление";
+                        String title = "Добавлена новая машина";
                         String message = "На твой телефон пришло новое уведомление, посмотри";
                         showNotification(getContext(), title, message);
                     }
-
-
                     Navigation.findNavController(view).navigate(R.id.action_addCar_to_firstScreen, bundle);
                 }
             }
         });
-
         return v;
     }
 
@@ -139,7 +136,7 @@ public class AddCar extends Fragment {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission is granted
                 // Perform the operation that requires this permission
-                String title = "Уведомление";
+                String title = "Добавлена новая машина";
                 String message = "На твой телефон пришло новое уведомление, посмотри";
                 showNotification(getContext(), title, message);
             } else {
@@ -166,15 +163,20 @@ public class AddCar extends Fragment {
             NotificationManager notificationManager = getContext().getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+        // Создаем intent, который будет запускать наше приложение при нажатии на уведомление
+        Intent intent = new Intent(requireContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.car)
                 .setContentTitle(title)
                 .setContentText(message)
+                .setAutoCancel(true) // автоматически закрывает уведомление после нажатия
+                .setContentIntent(pendingIntent)// добавляем PendingIntent
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, builder.build());
     }
 

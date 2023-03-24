@@ -1,5 +1,6 @@
 package com.example.pr55;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -99,14 +100,10 @@ public class FirstScreen extends Fragment {
                 Log.d(TAG, "Button clicked Services");
 
                 if (savedInstanceState == null) {
-                    //getActivity().getSupportFragmentManager().beginTransaction()
-                    //        .replace(R.id.container, Services.newInstance())
-                    //       .commit();
                     Navigation.findNavController(view).navigate(R.id.action_firstScreen_to_services);
                 }
             }
         });
-
         cardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
