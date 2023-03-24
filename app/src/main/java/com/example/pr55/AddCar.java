@@ -119,8 +119,8 @@ public class AddCar extends Fragment {
                                 REQUEST_CODE_PERMISSION);
 
                     } else {
-                        String title = "Нажата кнопка";
-                        String message = "Ты просто супер";
+                        String title = "Уведомление";
+                        String message = "На твой телефон пришло новое уведомление, посмотри";
                         showNotification(getContext(), title, message);
                     }
 
@@ -139,8 +139,8 @@ public class AddCar extends Fragment {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission is granted
                 // Perform the operation that requires this permission
-                String title = "Нажата кнопка";
-                String message = "Ты просто супер";
+                String title = "Уведомление";
+                String message = "На твой телефон пришло новое уведомление, посмотри";
                 showNotification(getContext(), title, message);
             } else {
                 // Permission is denied

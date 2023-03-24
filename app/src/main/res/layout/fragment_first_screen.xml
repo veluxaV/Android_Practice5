@@ -79,6 +79,15 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/red"
         android:text="@string/choose_service" />
+    <Button
+        android:id="@+id/card_button"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choose_service_button"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/red"
+        android:text="Карта лояльности" />
 
 
 </RelativeLayout>

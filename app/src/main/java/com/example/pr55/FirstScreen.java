@@ -1,13 +1,18 @@
 package com.example.pr55;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.Navigation;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +25,7 @@ public class FirstScreen extends Fragment {
 
     Button addCarButton;
     Button chooseServiceButton;
+    Button cardButton;
     final String TAG = "FirstScreenLayout";
     final static String ARG_PARAM1 = "CAR_NAME";
     final static String ARG_PARAM2 = "CAR_BRAND";
@@ -64,6 +70,7 @@ public class FirstScreen extends Fragment {
         add_car_text = (TextView) v.findViewById(R.id.add_car_text);
         addCarButton = (Button) v.findViewById(R.id.add_car_button);
         chooseServiceButton = (Button) v.findViewById(R.id.choose_service_button);
+        cardButton = (Button) v.findViewById(R.id.card_button);
         if (getArguments() != null) {
             String name = getArguments().getString(ARG_PARAM1);
             //String brand = getArguments().getString(ARG_PARAM2);
@@ -83,7 +90,6 @@ public class FirstScreen extends Fragment {
                 //            .replace(R.id.container, AddCar.newInstance())
                 //            .commit();
                 }
-
                 Navigation.findNavController(view).navigate(R.id.action_firstScreen_to_addCar);
             }
         });
@@ -100,8 +106,29 @@ public class FirstScreen extends Fragment {
                 }
             }
         });
+
+        cardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "Button clicked card");
+
+                if (savedInstanceState == null) {
+                    //Intent serviceIntent = new Intent(getContext(), MyService.class);
+                    //getContext().startService(serviceIntent);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(getContext())) {
+                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                Uri.parse("package:" + getActivity().getPackageName()));
+                        startActivity(intent);
+                    } else {
+                        getActivity().startService(new Intent(getContext(),
+                                MyService.class));
+                    }
+                }
+            }
+        });
         return v;
     }
+
     @Override
     public void onResume() {
         super.onResume();
