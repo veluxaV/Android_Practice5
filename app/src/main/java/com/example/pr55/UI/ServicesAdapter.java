@@ -1,6 +1,7 @@
 package com.example.pr55.UI;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
     public void onBindViewHolder(ServicesAdapter.ViewHolder holder, int position) {
         ServiceItem serviceItem = services.get(position);
         holder.serviceName.setText(serviceItem.getName());
+
     }
     @Override
     public int getItemCount() {
@@ -62,6 +64,7 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
         @Override
         public void onClick(View view) {
             onItemClickListener.onItemClick(getAdapterPosition());
+            Log.d("12345678", "Button clicked recyclerView");
         }
     }
     public interface OnItemClickListener {

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_firstScreen_to_services"
             app:destination="@id/services" />
+        <action
+            android:id="@+id/action_firstScreen_to_fragment_profile"
+            app:destination="@id/fragment_profile" />
     </fragment>
     <fragment
         android:id="@+id/addCar"
@@ -33,6 +36,15 @@
         tools:layout="@layout/fragment_services" >
         <action
             android:id="@+id/action_services_to_firstScreen"
+            app:destination="@id/firstScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.example.pr55.UI.fragment_profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_fragment_profile_to_firstScreen"
             app:destination="@id/firstScreen" />
     </fragment>
 </navigation>

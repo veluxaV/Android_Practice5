@@ -10,13 +10,14 @@ public class ServiceRepository {
     }
 
     public List<ServiceItem> getServices() {
-        List<ServiceItem> ServicesList = localDataSource.getAutoServices();
+        List<ServiceItem> ServicesList = localDataSource.getServices();
         if (ServicesList == null || ServicesList.isEmpty()) {
             //autoServices = remoteDataSource.getAutoServices();
-            localDataSource.saveAutoServices(ServicesList);
+            localDataSource.saveServices(ServicesList);
         }
         return ServicesList;
     }
-
-
+    public ServiceItem getServiceById(int ServiceId) {
+        return localDataSource.getServiceItemById(ServiceId);
+    }
 }

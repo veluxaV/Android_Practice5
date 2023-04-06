@@ -93,29 +93,12 @@ public class Services extends Fragment implements ServicesAdapter.OnItemClickLis
         return v;
     }
 
-    public ArrayList<String> getServicesFromFile(Context context) throws IOException
-    //метод для чтения построчно из файла
-    {
-        ArrayList<String> arrayList = new ArrayList<>();
-        try {
-            String line;
-            AssetManager assetManager = context.getAssets();
-            InputStreamReader istream = new InputStreamReader(assetManager.open("Services.txt"));
-            BufferedReader in = new BufferedReader(istream);
-            while ((line = in.readLine()) != null){
-                arrayList.add(line);
-            }
-            in.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return arrayList;
-    }
     @Override
     public void onItemClick(int position) {
         Toast.makeText(getContext(), "RecyclerView нажатие", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "RecyclerView нажатие");
     }
+
     @Override
     public void onResume() {
         super.onResume();
