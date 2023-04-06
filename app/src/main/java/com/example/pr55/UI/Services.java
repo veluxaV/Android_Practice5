@@ -1,4 +1,4 @@
-package com.example.pr55;
+package com.example.pr55.UI;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -13,16 +13,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.pr55.R;
+import com.example.pr55.data.ServiceDataSource;
+import com.example.pr55.data.ServiceItem;
+import com.example.pr55.data.ServiceRepository;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Services extends Fragment implements ServicesAdapter.OnItemClickListener {
@@ -60,22 +64,22 @@ public class Services extends Fragment implements ServicesAdapter.OnItemClickLis
 
         backButton = (Button) v.findViewById(R.id.GoBackButton);
 
-        String[] servicesArray;// массив для названий
-        try {
-            servicesArray = getServicesFromFile(getContext()).toArray(new String[getServicesFromFile(getContext()).size()]);
-            // вызов метода считывания  построчно из файла
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
+        // инициализация RecyclerView и адаптера
         // Первым делом необходимо найти список на верстке экрана
         services = (RecyclerView) v.findViewById(R.id.services);
+        // загрузка данных из репозитория и обновление списка услуг
+        ServiceRepository repository = new ServiceRepository(
+                new ServiceDataSource());
+        List<ServiceItem> servicesList = repository.getServices();
+
         // Далее, создать адаптер и передать в него Context имассив элементов
-        ServicesAdapter adapter = new ServicesAdapter(getContext(), servicesArray, this);
+        ServicesAdapter adapter = new ServicesAdapter(getContext(), servicesList, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         services.setLayoutManager(layoutManager);
         // устанавливаем для списка адаптер
         services.setAdapter(adapter);
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

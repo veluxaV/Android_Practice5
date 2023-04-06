@@ -1,4 +1,4 @@
-package com.example.pr55;
+package com.example.pr55.UI;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -21,7 +21,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -34,6 +33,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import android.Manifest;
+
+import com.example.pr55.MainActivity;
+import com.example.pr55.R;
 
 
 public class AddCar extends Fragment {

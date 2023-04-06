@@ -1,16 +1,12 @@
-package com.example.pr55;
+package com.example.pr55.UI;
 
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.Navigation;
 
 import android.provider.Settings;
@@ -21,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.pr55.R;
 
 public class FirstScreen extends Fragment {
 

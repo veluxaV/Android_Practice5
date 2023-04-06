@@ -9,6 +9,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 
+import com.example.pr55.R;
+
 public class MainActivity extends AppCompatActivity {
 
     private NavController navController;

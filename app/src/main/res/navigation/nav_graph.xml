@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/firstScreen"
-        android:name="com.example.pr55.FirstScreen"
+        android:name="com.example.pr55.UI.FirstScreen"
         android:label="fragment_first_screen"
         tools:layout="@layout/fragment_first_screen" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/addCar"
-        android:name="com.example.pr55.AddCar"
+        android:name="com.example.pr55.UI.AddCar"
         android:label="fragment_add_car"
         tools:layout="@layout/fragment_add_car" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/services"
-        android:name="com.example.pr55.Services"
+        android:name="com.example.pr55.UI.Services"
         android:label="fragment_services"
         tools:layout="@layout/fragment_services" >
         <action
