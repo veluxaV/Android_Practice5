@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Services extends Fragment implements ServicesAdapter.OnItemClickListener {
+public class Services extends Fragment {
 
     final String TAG = "ServicesLayout";
     Button backButton;
@@ -74,7 +74,7 @@ public class Services extends Fragment implements ServicesAdapter.OnItemClickLis
         List<ServiceItem> servicesList = repository.getServices();
 
         // Далее, создать адаптер и передать в него Context имассив элементов
-        ServicesAdapter adapter = new ServicesAdapter(getContext(), servicesList, this);
+        ServicesAdapter adapter = new ServicesAdapter(getContext(), servicesList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         services.setLayoutManager(layoutManager);
         // устанавливаем для списка адаптер
@@ -91,12 +91,6 @@ public class Services extends Fragment implements ServicesAdapter.OnItemClickLis
             }
         });
         return v;
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        Toast.makeText(getContext(), "RecyclerView нажатие", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "RecyclerView нажатие");
     }
 
     @Override

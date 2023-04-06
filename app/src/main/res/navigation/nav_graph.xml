@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_services_to_firstScreen"
             app:destination="@id/firstScreen" />
+        <action
+            android:id="@+id/action_services_to_fragment_info"
+            app:destination="@id/fragment_info" />
     </fragment>
     <fragment
         android:id="@+id/fragment_profile"
@@ -46,5 +49,14 @@
         <action
             android:id="@+id/action_fragment_profile_to_firstScreen"
             app:destination="@id/firstScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_info"
+        android:name="com.example.pr55.UI.fragment_info"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_fragment_info_to_services"
+            app:destination="@id/services" />
     </fragment>
 </navigation>

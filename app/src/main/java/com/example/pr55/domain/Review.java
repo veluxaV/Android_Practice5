@@ -3,14 +3,14 @@ package com.example.pr55.domain;
 import java.util.Date;
 
 public class Review {
-    private final String id;
-    private final String userId;
-    private final String autoServiceId;
+    private int id;
+    private final int userId;
+    private final int autoServiceId;
     private final String comment;
     private final int rating;
     private final Date date;
 
-    public Review(String id, String userId, String autoServiceId, String comment, int rating, Date date) {
+    public Review(int id, int userId, int autoServiceId, String comment, int rating, Date date) {
         this.id = id;
         this.userId = userId;
         this.autoServiceId = autoServiceId;
@@ -19,15 +19,15 @@ public class Review {
         this.date = date;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public String getAutoServiceId() {
+    public int getAutoServiceId() {
         return autoServiceId;
     }
 
@@ -42,4 +42,5 @@ public class Review {
     public Date getDate() {
         return date;
     }
+    public void setId(int id) { this.id = id;}
 }
