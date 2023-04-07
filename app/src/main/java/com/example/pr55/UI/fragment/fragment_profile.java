@@ -1,4 +1,4 @@
-package com.example.pr55.UI;
+package com.example.pr55.UI.fragment;
 
 import android.os.Bundle;
 

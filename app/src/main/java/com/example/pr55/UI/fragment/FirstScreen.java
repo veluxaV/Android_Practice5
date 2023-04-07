@@ -1,4 +1,4 @@
-package com.example.pr55.UI;
+package com.example.pr55.UI.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pr55.R;
+import com.example.pr55.UI.MyService;
 
 public class FirstScreen extends Fragment {
 

@@ -1,9 +1,10 @@
-package com.example.pr55.data;
+package com.example.pr55.data.dataSource;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.pr55.domain.Review;
+import com.example.pr55.data.repository.ReviewRepository;
+import com.example.pr55.domain.model.Review;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,7 @@ public class ReviewDataSource {
         }
         return maxId + 1;
     }
-    interface Callback<T> {
+    public interface Callback<T> {
         void onSuccess(T data);
 
         void onError(Throwable throwable);

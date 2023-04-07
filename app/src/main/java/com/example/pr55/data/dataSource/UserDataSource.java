@@ -1,9 +1,9 @@
-package com.example.pr55.data;
+package com.example.pr55.data.dataSource;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.pr55.domain.User;
+import com.example.pr55.domain.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
-
+/*
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
                                                            @Override
                                                            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -49,11 +50,10 @@ public class MainActivity extends AppCompatActivity {
                                                            }
                                                        });
 
-
-
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+*/
 
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         return NavigationUI.navigateUp(navController, (Openable) null) || super.onSupportNavigateUp();

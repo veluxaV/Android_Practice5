@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/firstScreen"
-        android:name="com.example.pr55.UI.FirstScreen"
+        android:name="com.example.pr55.UI.fragment.FirstScreen"
         android:label="fragment_first_screen"
         tools:layout="@layout/fragment_first_screen" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/addCar"
-        android:name="com.example.pr55.UI.AddCar"
+        android:name="com.example.pr55.UI.fragment.AddCar"
         android:label="fragment_add_car"
         tools:layout="@layout/fragment_add_car" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/services"
-        android:name="com.example.pr55.UI.Services"
+        android:name="com.example.pr55.UI.fragment.Services"
         android:label="fragment_services"
         tools:layout="@layout/fragment_services" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_profile"
-        android:name="com.example.pr55.UI.fragment_profile"
+        android:name="com.example.pr55.UI.fragment.fragment_profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_info"
-        android:name="com.example.pr55.UI.fragment_info"
+        android:name="com.example.pr55.UI.fragment.fragment_info"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" >
         <action

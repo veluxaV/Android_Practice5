@@ -1,4 +1,4 @@
-package com.example.pr55.UI;
+package com.example.pr55.UI.fragment;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

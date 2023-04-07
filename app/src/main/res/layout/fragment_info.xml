@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.fragment_info"
+    tools:context=".UI.fragment.fragment_info"
     android:background="@color/grey"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -27,6 +27,20 @@
         android:layout_height="80dp"
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/service_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="info"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_box"
+        app:layout_constraintVertical_bias="0.04" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

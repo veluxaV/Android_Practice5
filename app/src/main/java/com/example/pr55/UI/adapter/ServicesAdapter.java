@@ -1,4 +1,4 @@
-package com.example.pr55.UI;
+package com.example.pr55.UI.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,22 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import androidx.navigation.NavController;
+import androidx.lifecycle.LiveData;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pr55.R;
-import com.example.pr55.data.ServiceItem;
+import com.example.pr55.domain.model.ServiceModel;
 
 import java.util.List;
 
 public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
-    private final List<ServiceItem> services;
+    private final LiveData<List<ServiceModel>> services;
     //private OnItemClickListener onItemClickListener;
 
-    ServicesAdapter(Context context, List<ServiceItem> services) {
+    public ServicesAdapter(Context context, LiveData<List<ServiceModel>> services) {
         this.services = services;
         this.inflater = LayoutInflater.from(context);
         //this.onItemClickListener = onItemClickListener;
@@ -37,22 +37,22 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
     }
     @Override
     public void onBindViewHolder(ServicesAdapter.ViewHolder holder, int position) {
-        ServiceItem serviceItem = services.get(position);
-        holder.serviceName.setText(serviceItem.getName());
+        ServiceModel serviceModel = services.getValue().get(position);
+        holder.serviceName.setText(serviceModel.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //нужный код
                 Log.d("12345678", "holder click");
                 Navigation.findNavController(v).navigate(R.id.action_services_to_fragment_info);
-                String text = serviceItem.getName();
+                String text = serviceModel.getName();
                 Log.d("12345678", text);
             }
         });
     }
     @Override
     public int getItemCount() {
-        return services.size();
+        return services.getValue().size();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView serviceName;

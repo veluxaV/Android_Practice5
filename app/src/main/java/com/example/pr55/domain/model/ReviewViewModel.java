@@ -1,11 +1,11 @@
-package com.example.pr55.UI;
+package com.example.pr55.domain.model;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.pr55.data.ReviewDataSource;
-import com.example.pr55.data.ReviewRepository;
-import com.example.pr55.domain.Review;
+import com.example.pr55.data.dataSource.ReviewDataSource;
+import com.example.pr55.data.repository.ReviewRepository;
+import com.example.pr55.domain.model.Review;
 
 import java.util.List;
 

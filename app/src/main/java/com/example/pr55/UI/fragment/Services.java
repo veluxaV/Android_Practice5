@@ -1,10 +1,9 @@
-package com.example.pr55.UI;
+package com.example.pr55.UI.fragment;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,15 +16,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.pr55.R;
-import com.example.pr55.data.ServiceDataSource;
-import com.example.pr55.data.ServiceItem;
-import com.example.pr55.data.ServiceRepository;
+import com.example.pr55.UI.adapter.ServicesAdapter;
+import com.example.pr55.data.dataSource.ServiceDataSource;
+import com.example.pr55.domain.model.ServiceModel;
+import com.example.pr55.data.repository.ServiceRepository;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -71,7 +66,7 @@ public class Services extends Fragment {
         // загрузка данных из репозитория и обновление списка услуг
         ServiceRepository repository = new ServiceRepository(
                 new ServiceDataSource());
-        List<ServiceItem> servicesList = repository.getServices();
+        LiveData<List<ServiceModel>> servicesList = repository.getServices();
 
         // Далее, создать адаптер и передать в него Context имассив элементов
         ServicesAdapter adapter = new ServicesAdapter(getContext(), servicesList);
