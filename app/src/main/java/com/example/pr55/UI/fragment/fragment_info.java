@@ -3,9 +3,11 @@ package com.example.pr55.UI.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,20 +15,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pr55.R;
+import com.example.pr55.UI.adapter.ServicesAdapter;
 import com.example.pr55.domain.model.ServiceModel;
 import com.example.pr55.domain.viewModel.ServiceViewModel;
 
 
-public class fragment_info extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class fragment_info extends Fragment  {
 
     Button backButton;
     private TextView service_info;
@@ -40,8 +34,7 @@ public class fragment_info extends Fragment {
     public static fragment_info newInstance(String param1, String param2) {
         fragment_info fragment = new fragment_info();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,8 +43,7 @@ public class fragment_info extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
 
     }
@@ -75,13 +67,16 @@ public class fragment_info extends Fragment {
         service_info = (TextView) v.findViewById(R.id.service_info);
 
         serviceViewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
-        serviceViewModel.getServices().observe(getViewLifecycleOwner(), serviceModels -> {
-            ServiceModel firstService = serviceModels.get(0);
-            String serviceName = firstService.getName();
-            service_info.setText(serviceName);
+        serviceViewModel.getSelectedService().observe(getViewLifecycleOwner(), service -> {
+            if (service != null) {
+                // Обновление UI с названием выбранного сервиса
+                Log.d("12345678", service.getName());
+                service_info.setText(service.getName());
+            }
         });
         serviceViewModel.loadServices();
 
         return v;
     }
+
 }

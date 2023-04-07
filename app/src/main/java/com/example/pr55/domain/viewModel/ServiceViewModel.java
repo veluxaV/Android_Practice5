@@ -14,6 +14,7 @@ public class ServiceViewModel extends ViewModel {
     private MutableLiveData<List<ServiceModel>> services;
     private ServiceDataSource localDataSource = new ServiceDataSource();
     private ServiceRepository repository = new ServiceRepository(localDataSource);
+    private MutableLiveData<ServiceModel> selectedService = new MutableLiveData<>();
 
     public ServiceViewModel() {
         services = new MutableLiveData<>();
@@ -25,5 +26,13 @@ public class ServiceViewModel extends ViewModel {
 
     public void loadServices() {
         services.setValue(repository.getServices().getValue());
+    }
+
+    public void selectService(ServiceModel service) {
+        selectedService.setValue(service);
+    }
+
+    public LiveData<ServiceModel> getSelectedService() {
+        return selectedService;
     }
 }

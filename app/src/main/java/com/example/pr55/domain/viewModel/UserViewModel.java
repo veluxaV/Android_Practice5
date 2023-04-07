@@ -1,4 +1,4 @@
-package com.example.pr55.domain.model;
+package com.example.pr55.domain.viewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

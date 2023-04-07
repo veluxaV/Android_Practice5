@@ -15,14 +15,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pr55.R;
 import com.example.pr55.domain.model.ServiceModel;
+import com.example.pr55.domain.viewModel.ServiceViewModel;
 
 import java.util.List;
 
 public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewHolder> {
-
+    private ServiceViewModel serviceViewModel = new ServiceViewModel();
     private final LayoutInflater inflater;
     private final LiveData<List<ServiceModel>> services;
     //private OnItemClickListener onItemClickListener;
+
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(ServiceModel service);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public ServicesAdapter(Context context, LiveData<List<ServiceModel>> services) {
         this.services = services;
@@ -43,10 +53,17 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
             @Override
             public void onClick(View v) {
                 //нужный код
-                Log.d("12345678", "holder click");
-                Navigation.findNavController(v).navigate(R.id.action_services_to_fragment_info);
+                int position = holder.getAdapterPosition();
+                if (listener != null && position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(services.getValue().get(position));
+                }
+                /*
                 String text = serviceModel.getName();
                 Log.d("12345678", text);
+                serviceViewModel.selectService(serviceModel);
+                */
+
+                Navigation.findNavController(v).navigate(R.id.action_services_to_fragment_info);
             }
         });
     }
