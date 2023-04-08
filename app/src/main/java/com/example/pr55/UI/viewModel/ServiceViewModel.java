@@ -1,4 +1,4 @@
-package com.example.pr55.domain.viewModel;
+package com.example.pr55.UI.viewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.pr55.data.dataSource.ServiceDataSource;
 import com.example.pr55.data.repository.ServiceRepository;
-import com.example.pr55.domain.model.ServiceModel;
+import com.example.pr55.data.model.ServiceModel;
 
 import java.util.List;
 

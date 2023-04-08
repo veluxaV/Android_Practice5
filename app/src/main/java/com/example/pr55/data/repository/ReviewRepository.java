@@ -3,7 +3,7 @@ package com.example.pr55.data.repository;
 import androidx.lifecycle.LiveData;
 
 import com.example.pr55.data.dataSource.ReviewDataSource;
-import com.example.pr55.domain.model.Review;
+import com.example.pr55.data.model.Review;
 
 import java.util.List;
 

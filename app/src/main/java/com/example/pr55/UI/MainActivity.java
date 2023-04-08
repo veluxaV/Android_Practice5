@@ -1,4 +1,4 @@
-package com.example.pr55;
+package com.example.pr55.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

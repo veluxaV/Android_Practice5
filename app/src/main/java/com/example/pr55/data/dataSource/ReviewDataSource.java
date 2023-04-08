@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.pr55.data.repository.ReviewRepository;
-import com.example.pr55.domain.model.Review;
+import com.example.pr55.data.model.Review;
 
 import java.util.ArrayList;
 import java.util.List;

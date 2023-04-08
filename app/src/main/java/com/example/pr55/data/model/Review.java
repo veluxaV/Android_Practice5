@@ -1,4 +1,4 @@
-package com.example.pr55.domain.model;
+package com.example.pr55.data.model;
 
 import java.util.Date;
 

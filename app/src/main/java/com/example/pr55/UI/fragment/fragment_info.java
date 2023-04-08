@@ -3,7 +3,6 @@ package com.example.pr55.UI.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -15,9 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pr55.R;
-import com.example.pr55.UI.adapter.ServicesAdapter;
-import com.example.pr55.domain.model.ServiceModel;
-import com.example.pr55.domain.viewModel.ServiceViewModel;
+import com.example.pr55.UI.viewModel.ServiceViewModel;
 
 
 public class fragment_info extends Fragment  {

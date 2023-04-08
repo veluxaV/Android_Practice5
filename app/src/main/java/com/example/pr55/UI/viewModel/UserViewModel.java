@@ -1,11 +1,11 @@
-package com.example.pr55.domain.viewModel;
+package com.example.pr55.UI.viewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.pr55.data.repository.UserRepository;
-import com.example.pr55.domain.model.User;
+import com.example.pr55.data.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.example.pr55.UI.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pr55.R;
-import com.example.pr55.domain.model.ServiceModel;
-import com.example.pr55.domain.viewModel.ServiceViewModel;
+import com.example.pr55.data.model.ServiceModel;
+import com.example.pr55.UI.viewModel.ServiceViewModel;
 
 import java.util.List;
 

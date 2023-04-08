@@ -18,9 +18,9 @@ import android.widget.Toast;
 import com.example.pr55.R;
 import com.example.pr55.UI.adapter.ServicesAdapter;
 import com.example.pr55.data.dataSource.ServiceDataSource;
-import com.example.pr55.domain.model.ServiceModel;
+import com.example.pr55.data.model.ServiceModel;
 import com.example.pr55.data.repository.ServiceRepository;
-import com.example.pr55.domain.viewModel.ServiceViewModel;
+import com.example.pr55.UI.viewModel.ServiceViewModel;
 
 import java.util.List;
 

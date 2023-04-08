@@ -1,4 +1,4 @@
-package com.example.pr55.domain.model;
+package com.example.pr55.data.model;
 
 public class User {
     private String username;

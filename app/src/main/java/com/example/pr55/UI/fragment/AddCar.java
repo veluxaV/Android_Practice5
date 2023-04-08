@@ -34,7 +34,7 @@ import java.util.ArrayList;
 
 import android.Manifest;
 
-import com.example.pr55.MainActivity;
+import com.example.pr55.UI.MainActivity;
 import com.example.pr55.R;
 
 

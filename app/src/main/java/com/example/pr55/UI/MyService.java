@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.example.pr55.MainActivity;
 import com.example.pr55.R;
 
 public class MyService extends Service {
