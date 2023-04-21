@@ -87,9 +87,47 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+
             <!-- Другие элементы содержимого профиля -->
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/support_textView"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/red"
+            android:gravity="center"
+            android:text="support@support.com"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/support_button"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/red"
+            android:text="Техподдержка" />
+
+        <TextView
+            android:id="@+id/problem_textView"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16sp" />
     </LinearLayout>
 
 

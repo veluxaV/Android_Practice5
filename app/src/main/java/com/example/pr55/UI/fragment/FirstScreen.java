@@ -132,15 +132,10 @@ public class FirstScreen extends Fragment {
                 Log.d(TAG, "Button clicked card");
 
                 if (savedInstanceState == null) {
-                    //Intent serviceIntent = new Intent(getContext(), MyService.class);
-                    //getContext().startService(serviceIntent);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(getContext())) {
-                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                Uri.parse("package:" + getActivity().getPackageName()));
-                        startActivity(intent);
-                    } else {
-                        getActivity().startService(new Intent(getContext(),
-                                MyService.class));
+                    Log.d(TAG, "Button clicked profile");
+
+                    if (savedInstanceState == null) {
+                        Navigation.findNavController(view).navigate(R.id.fragment_profile);
                     }
                 }
             }
@@ -168,6 +163,7 @@ public class FirstScreen extends Fragment {
                 }
             }
         });
+
         return v;
     }
 

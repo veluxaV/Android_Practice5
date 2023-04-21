@@ -87,7 +87,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/red"
-        android:text="Карта лояльности" />
+        android:text="Личный кабинет" />
     <EditText
         android:id="@+id/service_editText"
         android:layout_width="350dp"

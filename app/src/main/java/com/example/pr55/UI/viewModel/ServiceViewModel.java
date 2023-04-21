@@ -30,7 +30,8 @@ public class ServiceViewModel extends AndroidViewModel {
         //allServices.postValue
     }
 
-    public void insert(ServiceModel service) { mRepository.insert(new ServiceEntity(service.getId(), service.getName(), service.getPrice())); }
+    public void insert(ServiceModel service) { mRepository.insert
+            (new ServiceEntity(service.getId(), service.getName(), service.getPrice())); }
 
 
 }

@@ -1,12 +1,18 @@
 package com.example.pr55.UI.fragment;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pr55.R;
 
@@ -20,6 +26,10 @@ public class fragment_profile extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button backButton;
+    private Button supportButton;
+    private TextView supportTextView;
+    private TextView problemTextView;
 
     public fragment_profile() {
         // Required empty public constructor
@@ -56,6 +66,55 @@ public class fragment_profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        backButton = (Button) v.findViewById(R.id.GoBackButton);
+        supportButton = (Button) v.findViewById(R.id.support_button);
+        supportTextView = (TextView) v.findViewById(R.id.support_textView);
+        problemTextView = (TextView) v.findViewById(R.id.problem_textView);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (savedInstanceState == null) {
+                    Navigation.findNavController(view).navigate(R.id.action_fragment_profile_to_firstScreen);
+                }
+            }
+        });
+        supportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                String emailAddress = supportTextView.getText().toString();
+                String subject = "Тема письма";
+                String body = "Текст письма";
+                sendEmail(emailAddress, subject, body);
+
+                if (savedInstanceState == null) {
+
+                }
+            }
+        });
+
+
+
+        return v;
     }
+    private void sendEmail(String emailAddress, String subject, String body) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("message/rfc822");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailAddress});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Отправка письма..."));
+        } catch (ActivityNotFoundException ex) {
+            Toast.makeText(getContext(), "Нет приложения для отправки письма.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }
