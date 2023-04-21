@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Build;
@@ -50,6 +51,7 @@ public class AddCar extends Fragment {
     private EditText car_brandname;
     final static String ARG_PARAM1 = "CAR_NAME";
     final static String ARG_PARAM2 = "CAR_BRAND";
+    private static final String PREFS_NAME = "car_prefs";
 
 
     // Идентификатор канала
@@ -113,10 +115,27 @@ public class AddCar extends Fragment {
                 String name = car_name.getText().toString();
                 //String brand = car_brandname.getText().toString();
                 Log.d("Car name", name);
+
+                String fName = "car.txt";
+                //createFileAppSS(fName, name);
+                //createFileExternalStorage(fName, name);
+
+                // Получаем объект SharedPreferences для сохранения данных
+                SharedPreferences sharedPref = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
+                // Редактор SharedPreferences
+                SharedPreferences.Editor editor = sharedPref.edit();
+
+                // Сохраняем значение в SharedPreferences
+                editor.putString("car_name", name);
+
+                // Сохраняем изменения
+                editor.apply();
+
                 //Log.d("Car brand", brand);
                 if (savedInstanceState == null) {
                     Bundle bundle = new Bundle();
-                    bundle.putString(ARG_PARAM1, name);
+                    //bundle.putString(ARG_PARAM1, name);
 
                     if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS)
                             != PackageManager.PERMISSION_GRANTED) {
@@ -129,9 +148,7 @@ public class AddCar extends Fragment {
                         String message = "На твой телефон пришло новое уведомление, посмотри";
                         showNotification(getContext(), title, message);
                     }
-                    String fName = "car.txt";
-                    createFileAppSS(fName, name);
-                    createFileExternalStorage(fName, name);
+
 
                     Navigation.findNavController(view).navigate(R.id.action_addCar_to_firstScreen, bundle);
                 }

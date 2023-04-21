@@ -2,6 +2,7 @@ package com.example.pr55.UI.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class FirstScreen extends Fragment {
     final static String ARG_PARAM1 = "CAR_NAME";
     final static String ARG_PARAM2 = "CAR_BRAND";
     private TextView add_car_text;
-
+    private static final String PREFS_NAME = "car_prefs";
 
 
     public static FirstScreen newInstance(String param1, String param2) {
@@ -71,13 +72,21 @@ public class FirstScreen extends Fragment {
         addCarButton = (Button) v.findViewById(R.id.add_car_button);
         chooseServiceButton = (Button) v.findViewById(R.id.choose_service_button);
         cardButton = (Button) v.findViewById(R.id.card_button);
+
+        // Получаем объект SharedPreferences для чтения данных
+        SharedPreferences sharedPref = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);;
+
+        // Получаем сохраненное значение по ключу
+        String value = sharedPref.getString("car_name", "значение_по_умолчанию");
+        add_car_text.setText("Ваша машина: " + value);
+
         if (getArguments() != null) {
-            String name = getArguments().getString(ARG_PARAM1);
+            //String name = getArguments().getString(ARG_PARAM1);
             //String brand = getArguments().getString(ARG_PARAM2);
-            Log.d("Car name Get Args", name);
+            //Log.d("Car name Get Args", name);
             //Log.d("Car brand  Get Args", brand);
             //add_car_text.setText("Ваша машина: " + name + " " + brand);
-            add_car_text.setText("Ваша машина: " + name);
+            //add_car_text.setText("Ваша машина: " + name);
         }
 
         addCarButton.setOnClickListener(new View.OnClickListener() {
