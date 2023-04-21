@@ -1,38 +1,37 @@
 package com.example.pr55.UI.viewModel;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.pr55.data.dataSource.ServiceDataSource;
+import com.example.pr55.data.entities.ServiceEntity;
 import com.example.pr55.data.repository.ServiceRepository;
 import com.example.pr55.data.model.ServiceModel;
 
 import java.util.List;
 
-public class ServiceViewModel extends ViewModel {
-    private MutableLiveData<List<ServiceModel>> services;
-    private ServiceDataSource localDataSource = new ServiceDataSource();
-    private ServiceRepository repository = new ServiceRepository(localDataSource);
-    private MutableLiveData<ServiceModel> selectedService = new MutableLiveData<>();
+public class ServiceViewModel extends AndroidViewModel {
+    private ServiceRepository mRepository;
 
-    public ServiceViewModel() {
-        services = new MutableLiveData<>();
+    private final LiveData<List<ServiceModel>> allServices;
+
+    public ServiceViewModel (Application application) {
+        super(application);
+        mRepository = new ServiceRepository(application);
+        allServices = mRepository.getAllBServices();
     }
 
-    public LiveData<List<ServiceModel>> getServices() {
-        return services;
+    public LiveData<List<ServiceModel>> getAllServices() { return allServices; }
+    public void updateAllServices(List<ServiceModel> servicesList){
+        //allServices.postValue
     }
 
-    public void loadServices() {
-        services.setValue(repository.getServices().getValue());
-    }
+    public void insert(ServiceModel service) { mRepository.insert(new ServiceEntity(service.getId(), service.getName(), service.getPrice())); }
 
-    public void selectService(ServiceModel service) {
-        selectedService.setValue(service);
-    }
 
-    public LiveData<ServiceModel> getSelectedService() {
-        return selectedService;
-    }
 }
+

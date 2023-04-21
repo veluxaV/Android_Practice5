@@ -13,9 +13,7 @@ public class ServiceDataSource {
 
     public ServiceDataSource() {
         autoServices = new ArrayList<>();
-        autoServices.add(new ServiceModel(1, "Service 1", "Описание сервиса 1"));
-        autoServices.add(new ServiceModel(2, "Service 2", "Описание сервиса 2"));
-        autoServices.add(new ServiceModel(3, "Service 3", "Описание сервиса 3"));
+
     }
 
     public LiveData<List<ServiceModel>> getServices() {

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.example.pr55.data.model.ServiceModel;
 import com.example.pr55.data.repository.ServiceRepository;
 import com.example.pr55.UI.viewModel.ServiceViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -61,21 +63,27 @@ public class Services extends Fragment implements ServicesAdapter.OnItemClickLis
 
         backButton = (Button) v.findViewById(R.id.GoBackButton);
 
-
         // инициализация RecyclerView и адаптера
         // Первым делом необходимо найти список на верстке экрана
         services = (RecyclerView) v.findViewById(R.id.services);
-        // загрузка данных из репозитория и обновление списка услуг
-        ServiceRepository repository = new ServiceRepository(
-                new ServiceDataSource());
-        LiveData<List<ServiceModel>> servicesList = repository.getServices();
+        ServicesAdapter adapter = new ServicesAdapter(getContext());
 
         // Далее, создать адаптер и передать в него Context имассив элементов
-        ServicesAdapter adapter = new ServicesAdapter(getContext(), servicesList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         services.setLayoutManager(layoutManager);
         // устанавливаем для списка адаптер
         services.setAdapter(adapter);
+
+        ServiceViewModel servicesViewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
+        servicesViewModel.getAllServices().observe(getViewLifecycleOwner(), services -> {
+            // Обновляем данные в адаптере
+            adapter.setServices(services);
+        });
+        // загрузка данных из репозитория и обновление списка услуг
+        //ServiceRepository repository = new ServiceRepository(
+                //new ServiceDataSource());
+        //LiveData<List<ServiceModel>> servicesList = repository.getServices();
+
 
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +135,6 @@ public class Services extends Fragment implements ServicesAdapter.OnItemClickLis
 
     @Override
     public void onItemClick(ServiceModel service) {
-        serviceViewModel.selectService(service);
+        //serviceViewModel.selectService(service);
     }
 }

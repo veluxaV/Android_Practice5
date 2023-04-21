@@ -1,5 +1,6 @@
 package com.example.pr55.data.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -14,7 +15,7 @@ public interface  ServiceDao {
     void insertService(ServiceEntity service);
 
     @Query("SELECT * FROM services")
-    List<ServiceEntity> getAllServices();
+    LiveData<List<ServiceEntity>> getAllServices();
 
     @Query("SELECT * FROM services WHERE id = :id")
     ServiceEntity getServiceById(int id);

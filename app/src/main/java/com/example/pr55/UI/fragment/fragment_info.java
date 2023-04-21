@@ -62,7 +62,7 @@ public class fragment_info extends Fragment  {
             }
         });
         service_info = (TextView) v.findViewById(R.id.service_info);
-
+/*
         serviceViewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
         serviceViewModel.getSelectedService().observe(getViewLifecycleOwner(), service -> {
             if (service != null) {
@@ -72,7 +72,7 @@ public class fragment_info extends Fragment  {
             }
         });
         serviceViewModel.loadServices();
-
+*/
         return v;
     }
 

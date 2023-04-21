@@ -2,27 +2,27 @@ package com.example.pr55.data.model;
 
 public class ServiceModel {
     private int id;
-    private String name;
-    private String description;
+    private String serviceName;
+    private double price;
 
-    public ServiceModel(int id, String name, String description) {
+    public ServiceModel(int id, String serviceName, double price) {
         this.id = id;
-        this.name = name;
-        this.description = description;
+        this.serviceName = serviceName;
+        this.price = price;
     }
     public String getName() {
-        return name;
+        return serviceName;
     }
-    public String getDescription() {
-        return description;
+    public double getPrice() {
+        return price;
     }
     public int getId() {
         return id;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String serviceName) {
+        this.serviceName = serviceName;
     }
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

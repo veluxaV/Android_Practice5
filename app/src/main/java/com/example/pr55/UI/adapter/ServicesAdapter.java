@@ -16,12 +16,13 @@ import com.example.pr55.R;
 import com.example.pr55.data.model.ServiceModel;
 import com.example.pr55.UI.viewModel.ServiceViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewHolder> {
-    private ServiceViewModel serviceViewModel = new ServiceViewModel();
+    //private ServiceViewModel serviceViewModel = new ServiceViewModel();
     private final LayoutInflater inflater;
-    private final LiveData<List<ServiceModel>> services;
+    private List<ServiceModel> services = new ArrayList<>();
     //private OnItemClickListener onItemClickListener;
 
     private OnItemClickListener listener;
@@ -33,8 +34,7 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
         this.listener = listener;
     }
 
-    public ServicesAdapter(Context context, LiveData<List<ServiceModel>> services) {
-        this.services = services;
+    public ServicesAdapter(Context context) {
         this.inflater = LayoutInflater.from(context);
         //this.onItemClickListener = onItemClickListener;
     }
@@ -46,7 +46,7 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
     }
     @Override
     public void onBindViewHolder(ServicesAdapter.ViewHolder holder, int position) {
-        ServiceModel serviceModel = services.getValue().get(position);
+        ServiceModel serviceModel = services.get(position);
         holder.serviceName.setText(serviceModel.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +54,7 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
                 //нужный код
                 int position = holder.getAdapterPosition();
                 if (listener != null && position != RecyclerView.NO_POSITION) {
-                    listener.onItemClick(services.getValue().get(position));
+                    listener.onItemClick(services.get(position));
                 }
                 /*
                 String text = serviceModel.getName();
@@ -68,7 +68,11 @@ public class ServicesAdapter extends RecyclerView.Adapter< ServicesAdapter.ViewH
     }
     @Override
     public int getItemCount() {
-        return services.getValue().size();
+        return services.size();
+    }
+    public void setServices(List<ServiceModel> services) {
+        this.services = services;
+        notifyDataSetChanged();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView serviceName;
