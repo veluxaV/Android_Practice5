@@ -97,7 +97,17 @@ public class fragment_profile extends Fragment {
             }
         });
 
+        // Получаем Intent, который запустил активность
+        Intent intent = getActivity().getIntent();
 
+        // Проверяем, что Intent содержит текст
+        if (intent.getType() != null && intent.getType().equals("text/plain")) {
+            String text = intent.getStringExtra(Intent.EXTRA_TEXT);
+            problemTextView.setText(text);
+
+            // Выводим текст в Toast сообщении
+            Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
+        }
 
         return v;
     }
