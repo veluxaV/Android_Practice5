@@ -16,6 +16,10 @@ import com.example.pr55.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private NavController navController;
@@ -50,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
                                                            }
                                                        });
 
-*/
 
+
+*/
     }
 
     @Override

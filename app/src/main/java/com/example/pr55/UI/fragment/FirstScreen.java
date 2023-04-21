@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pr55.R;
-import com.example.pr55.UI.MyService;
+import com.example.pr55.service.MyService;
 
 public class FirstScreen extends Fragment {
 

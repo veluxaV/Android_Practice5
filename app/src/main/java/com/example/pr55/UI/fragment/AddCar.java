@@ -27,7 +27,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -85,7 +87,7 @@ public class AddCar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_car, container, false);
-        Toast.makeText(getActivity(), "onCreateViewAddCar", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "onCreateViewAddCar", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onCreateView");
 
         backButton = (Button) v.findViewById(R.id.GoBackButton);
@@ -93,6 +95,7 @@ public class AddCar extends Fragment {
         car_name = (EditText) v.findViewById(R.id.name_edit_text);
         //final String[] carBrandArray = getResources().getStringArray(R.array.car_brands);
         //car_brandname = (EditText) v.findViewById(R.id.brand_edit_text);
+
 
         String[] carBrandArray;// массив для названий
         try {
@@ -125,6 +128,9 @@ public class AddCar extends Fragment {
                         String message = "На твой телефон пришло новое уведомление, посмотри";
                         showNotification(getContext(), title, message);
                     }
+                    String fName = "car.txt";
+                    createFileAppSS(fName, name);
+
                     Navigation.findNavController(view).navigate(R.id.action_addCar_to_firstScreen, bundle);
                 }
             }
@@ -134,8 +140,8 @@ public class AddCar extends Fragment {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == REQUEST_CODE_PERMISSION) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == 1 && grantResults.length == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission is granted
                 // Perform the operation that requires this permission
                 String title = "Добавлена новая машина";
@@ -150,6 +156,16 @@ public class AddCar extends Fragment {
         }
     }
 
+    public void createFileAppSS(String fName, String fText){
+        Context context = getContext();
+        try (FileOutputStream fos = context.openFileOutput(fName, Context.MODE_PRIVATE)) {
+            fos.write(fText.getBytes());
+            Log.d("AppSpecificStorage", "Был создан текстовый файл в app-specific storage"
+                    + context.getDataDir().getAbsolutePath()+"/"
+                    + fName);
+        } catch (IOException e) {throw new RuntimeException(e);}
+
+    }
 
     public void showNotification(Context context, String title, String message) {
 
@@ -203,7 +219,7 @@ public class AddCar extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Toast.makeText(getActivity(), "onResumeAddCar", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "onResumeAddCar", Toast.LENGTH_SHORT).show();
         Log.d("TAG", "onResume");
     }
 

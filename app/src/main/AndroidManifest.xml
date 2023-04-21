@@ -16,7 +16,7 @@
         tools:targetApi="31">
 
         <service
-            android:name=".UI.MyService"
+            android:name=".service.MyService"
             android:enabled="true"
             android:exported="true"/>
 

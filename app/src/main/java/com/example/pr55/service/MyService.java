@@ -1,4 +1,4 @@
-package com.example.pr55.UI;
+package com.example.pr55.service;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.pr55.R;
+import com.example.pr55.UI.MainActivity;
 
 public class MyService extends Service {
     private WindowManager windowManager;
