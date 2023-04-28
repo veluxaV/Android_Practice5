@@ -1,11 +1,11 @@
-package com.example.pr55.data.dao;
+package com.example.pr55.data.dataSource.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.pr55.data.entities.ServiceEntity;
+import com.example.pr55.data.dataSource.entities.ServiceEntity;
 
 import java.util.List;
 

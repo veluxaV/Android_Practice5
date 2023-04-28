@@ -1,4 +1,4 @@
-package com.example.pr55.data.RoomDatabases;
+package com.example.pr55.data.dataSource.RoomDatabases;
 
 import android.content.Context;
 
@@ -8,8 +8,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.pr55.data.dao.ServiceDao;
-import com.example.pr55.data.entities.ServiceEntity;
+import com.example.pr55.data.dataSource.dao.ServiceDao;
+import com.example.pr55.data.dataSource.entities.ServiceEntity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

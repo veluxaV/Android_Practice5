@@ -25,4 +25,6 @@ public class ServiceModel {
     public void setPrice(int price) {
         this.price = price;
     }
+
+
 }

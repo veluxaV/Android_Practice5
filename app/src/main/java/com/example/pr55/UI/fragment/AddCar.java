@@ -166,7 +166,8 @@ public class AddCar extends Fragment {
                 String title = "Добавлена новая машина";
                 String message = "На твой телефон пришло новое уведомление, посмотри";
                 showNotification(getContext(), title, message);
-                createFileExternalStorage("car.txt", "Пример текста для записи в файл");
+
+                //createFileExternalStorage("car.txt", "Пример текста для записи в файл");
             } else {
                 // Permission is denied
                 // Disable the functionality that depends on this permission
@@ -175,38 +176,6 @@ public class AddCar extends Fragment {
             }
         }
     }
-
-    public void createFileAppSS(String fName, String fText){
-        Context context = getContext();
-        try (FileOutputStream fos = context.openFileOutput(fName, Context.MODE_PRIVATE)) {
-            fos.write(fText.getBytes());
-            Log.d("AppSpecificStorage", "Был создан текстовый файл в app-specific storage"
-                    + context.getDataDir().getAbsolutePath()+"/"
-                    + fName);
-        } catch (IOException e) {throw new RuntimeException(e);}
-
-    }
-    public void createFileExternalStorage(String fileName, String fileContent) {
-        Context context = getContext();
-        if (context.getApplicationContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED) {
-            File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-            File file = new File(filePath, fileName);
-            FileOutputStream outputStream;
-            try {
-                outputStream = new FileOutputStream(file);
-                outputStream.write(fileContent.getBytes());
-                Log.d("ExternalStorage", "Был создан текстовый файл в общем хранилище " + filePath +"/"+ fileName);
-                outputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},1 );
-        }
-    }
-
 
     public void showNotification(Context context, String title, String message) {
 

@@ -3,6 +3,7 @@ package com.example.pr55.UI.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -84,15 +85,17 @@ public class FirstScreen extends Fragment {
         addServiceButton = (Button) v.findViewById(R.id.add_service_button);
         serviceEditText = (EditText) v.findViewById(R.id.service_editText);
 
-        // Получаем объект SharedPreferences для чтения данных
-        SharedPreferences sharedPref = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);;
+
+
+
+        //ServiceViewModel viewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
+        //LiveData<List<ServiceModel>> servicesLiveData = viewModel.getAllServices();
 
         // Получаем сохраненное значение по ключу
-        String value = sharedPref.getString("car_name", "значение_по_умолчанию");
-        add_car_text.setText("Ваша машина: " + value);
+        //String value = viewModel.getServiceName();
+        //add_car_text.setText("Ваша машина: " + value);
 
-        ServiceViewModel viewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
-        LiveData<List<ServiceModel>> servicesLiveData = viewModel.getAllServices();
+
 
         if (getArguments() != null) {
             //String name = getArguments().getString(ARG_PARAM1);
@@ -148,15 +151,18 @@ public class FirstScreen extends Fragment {
                 String serviceName = serviceEditText.getText().toString();
 
                 // Insert new service
-                ServiceModel newService = new ServiceModel(7, serviceName,1000);
-                viewModel.insert(newService);
-
-                // Add new service to the list
-                List<ServiceModel> servicesList = servicesLiveData.getValue();
-                if (servicesList != null) {
-                    servicesList.add(newService);
-                    //servicesLiveData.setValue(servicesList);
-                }
+//                ServiceModel newService = new ServiceModel(7, serviceName,1000);
+//                viewModel.insert(newService);
+//                viewModel.createFileAppSS("FileName", serviceName);
+//
+//                viewModel.createFileExternalStorage("FileName", serviceName);
+//
+//                // Add new service to the list
+//                List<ServiceModel> servicesList = servicesLiveData.getValue();
+//                if (servicesList != null) {
+//                    servicesList.add(newService);
+//                    //servicesLiveData.setValue(servicesList);
+//                }
 
                 if (savedInstanceState == null) {
                     Navigation.findNavController(view).navigate(R.id.action_firstScreen_to_services);
@@ -166,7 +172,24 @@ public class FirstScreen extends Fragment {
 
         return v;
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 1 && grantResults.length == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission is granted
+                // Perform the operation that requires this permission
 
+                ServiceViewModel viewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
+                String serviceName = serviceEditText.getText().toString();
+                viewModel.createFileExternalStorage("FileName", serviceName);
+            } else {
+                // Permission is denied
+                // Disable the functionality that depends on this permission
+                Toast.makeText(getActivity(), "Permission denied", Toast.LENGTH_SHORT).show();
+                Log.d("", "");
+            }
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();

@@ -1,4 +1,4 @@
-package com.example.pr55.data.entities;
+package com.example.pr55.data.dataSource.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
